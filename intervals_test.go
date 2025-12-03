@@ -69,7 +69,10 @@ func TestReset(t *testing.T) {
 
 	// Exhaust the interval
 	for range i.values {
-		i.Next()
+		_, err := i.Next()
+		if err != nil {
+			break
+		}
 	}
 
 	i.Reset()
